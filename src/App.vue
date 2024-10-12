@@ -2,14 +2,16 @@
 import { RouterView, RouterLink } from 'vue-router';
 import PrefetchRouterLink from './components/PrefetchRouterLink.vue'
 const name = 'dashboard'
+const panel = 'panel'
 </script>
 
 <template>
   <nav class="nav">
-    <RouterLink to="/">Go to Home</RouterLink>
-    <RouterLink to="/about">Go to About</RouterLink>
-    <RouterLink to="/dashboard">Go to Dashboard</RouterLink>
-    <PrefetchRouterLink to="/about" :prefetchName="name">Pre Go to About</PrefetchRouterLink>
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/about">About</RouterLink>
+    <PrefetchRouterLink :to="{ name: 'about' }" :prefetchName="name" :teleEnabled="true">About[dashboard]</PrefetchRouterLink>
+    <RouterLink to="/dashboard">Dashboard</RouterLink>
+    <PrefetchRouterLink to="/admin" :prefetchName="panel" :teleEnabled="false">Admin[panel]</PrefetchRouterLink>
   </nav>
 
   <RouterView />
@@ -26,7 +28,7 @@ const name = 'dashboard'
   border-bottom: 1px rgba(156, 163, 175, 0.1) solid;
 }
 
-.nav a {
+.nav * {
   text-decoration: none;
   line-height: 50px;
 }
