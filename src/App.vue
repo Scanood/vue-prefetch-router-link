@@ -12,6 +12,7 @@ const panel = 'panel'
     <PrefetchRouterLink :to="{ name: 'about' }" :prefetchName="name" :teleEnabled="true">About[dashboard]</PrefetchRouterLink>
     <RouterLink to="/dashboard">Dashboard</RouterLink>
     <PrefetchRouterLink to="/admin" :prefetchName="panel" :teleEnabled="false">Admin[panel]</PrefetchRouterLink>
+    <PrefetchRouterLink to="/father" :prefetchName="['son1','son2']">Father</PrefetchRouterLink>
   </nav>
 
   <RouterView />

@@ -1,5 +1,47 @@
-# Vue 3 + Vite
+# vue-prefetch-router-link
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Usage
+
+### 1. 进入某页面后自动加载
+```html
+<template>
+  <nav class="nav">
+    <PrefetchRouterLink :to="{ name: 'about' }" prefetchName="dashboard">About[dashboard]</PrefetchRouterLink>
+    <PrefetchRouterLink to="/admin" prefetchName="panel" >Admin[panel]</PrefetchRouterLink>
+    <PrefetchRouterLink to="/father" :prefetchName="['son1','son2']">Father</PrefetchRouterLink>
+  </nav>
+  <RouterView />
+</template>
+```
+prefetchName：接收一个字符串或字符串数组，表示为当进入`to`指代路由后预加载的路由的`name`。
+
+```html
+<PrefetchRouterLink to="/admin" prefetchName="panel" >Admin[panel]</PrefetchRouterLink>
+```
+表示为：导航到`/admin`页面后，预加载`name:panel`的路由。
+
+### 2. 手动启动预加载
+```html
+<PrefetchRouterLink :to="{ name: 'about' }" :prefetchName="name" :teleEnabled="true">About[dashboard]</PrefetchRouterLink>
+```
+设置`:teleEnabled="true"`。
+
+手动启动预加载。
+```vue
+<script setup>
+const tele = useTele('/about')
+function mockEvent() {
+    tele.setTele(true); // 触发预加载
+}
+</script>
+
+<template>
+    <div class="content">
+        this is about page.
+        <div class="hover" @mouseover="mockEvent">
+            hover me!
+        </div>
+    </div>
+</template>
+```
