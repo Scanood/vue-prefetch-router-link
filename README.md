@@ -7,7 +7,7 @@
 ```html
 <template>
   <nav class="nav">
-
+    // 接收RouterLink相同的参数，to为一个对象
     <PrefetchRouterLink 
     :to="{ name: 'about' }" 
     prefetchName="dashboard"
@@ -15,6 +15,7 @@
     About[dashboard]
     </PrefetchRouterLink>
 
+    // 接收RouterLink相同的参数，to为一个字符串
     <PrefetchRouterLink 
     to="/admin" 
     prefetchName="panel"
@@ -22,6 +23,7 @@
     Admin[panel]
     </PrefetchRouterLink>
 
+    // prefetchName可接收一个字符串数组
     <PrefetchRouterLink 
     to="/father" 
     :prefetchName="['son1','son2']"
@@ -50,7 +52,7 @@ Admin[panel]
 ```html
 <PrefetchRouterLink 
 :to="{ name: 'about' }" 
-:prefetchName="name" 
+prefetchName="dashboard" 
 :teleEnabled="true"
 >
 About[dashboard]
@@ -58,12 +60,12 @@ About[dashboard]
 ```
 设置`:teleEnabled="true"`。
 
-手动启动预加载。
+在`About.vue`中，通过某些事件手动启动预加载。
 ```vue
 <script setup>
 const tele = useTele()
 function mockEvent() {
-    tele.setTele(true); // 触发预加载
+     tele.open(); // 触发预加载
 }
 </script>
 

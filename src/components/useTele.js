@@ -12,8 +12,8 @@ function useTele(name) {
     } else {
         const Tele = {
             state: ref(false),
-            setTele: function (value) {
-                this.state.value = value
+            open: function () {
+                this.state.value = true
             },
             getTele: function () {
                 return this.state.value

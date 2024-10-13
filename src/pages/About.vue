@@ -3,7 +3,7 @@ import { useTele } from '../components/useTele'
 const tele = useTele()
 function mockEvent() {
     console.log('hover');
-    tele.setTele(true);
+    tele.open();
 }
 
 </script>
