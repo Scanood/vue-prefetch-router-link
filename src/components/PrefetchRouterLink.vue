@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { useAttrs, watch, ref, useSlots } from 'vue';
+import { useAttrs, watch, ref } from 'vue';
 import { RouterLink, useRoute, useRouter, createRouterMatcher } from 'vue-router';
 import { useTele } from './useTele'
 const attrs = useAttrs()
@@ -44,10 +44,13 @@ watch([() => route.fullPath, () => tele.getTele()], (newpath) => {
     if (newpath[0] === to.fullPath && clicked.value) {
         if (props.teleEnabled && tele.getTele() || !props.teleEnabled) {
             prefetchName.forEach((name) => {
-                const Component = getRoute(name).components.default
-                if (typeof Component === 'function') {
-                    setTimeout(() => { Component() }, 0)
-                }
+                const Components = getRoute(name).components
+                Object.values(Components).forEach((Component) => {
+                    if (typeof Component === 'function') {
+                        setTimeout(() => { Component() }, 0)
+                    }
+                })
+
             })
         }
     } else {

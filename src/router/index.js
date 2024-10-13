@@ -12,7 +12,8 @@ const routes = [
         children: [
             { path: 'son1', component: () => import('../pages/son1.vue'), name: "son1" },
             { path: 'son2', component: () => import('../pages/son2.vue'), name: 'son2' }
-        ]
+        ],
+        name: 'father'
     }
 ]
 
