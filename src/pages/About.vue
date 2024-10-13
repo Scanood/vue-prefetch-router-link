@@ -1,6 +1,6 @@
 <script setup>
 import { useTele } from '../components/useTele'
-const tele = useTele('/about')
+const tele = useTele()
 function mockEvent() {
     console.log('hover');
     tele.setTele(true);

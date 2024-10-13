@@ -38,6 +38,8 @@ function getRoute(name) {
 const prefetchName = FomatPrefetchPath()
 const route = useRoute()
 const to = router.resolve(attrs.to)
+console.log("to.fullPath",to.fullPath);
+
 const tele = useTele(to.fullPath)
 
 watch([() => route.fullPath, () => tele.getTele()], (newpath) => {
