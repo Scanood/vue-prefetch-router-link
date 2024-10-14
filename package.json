@@ -1,8 +1,20 @@
 {
-  "name": "vue-prefetch-router",
-  "private": true,
-  "version": "0.0.0",
+  "name": "vue-prefetch-router-link",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "author": "scanood",
+  "description": "Automatically or manually prefetch specified routes in vue app.",
+  "keywords": [
+    "vue3",
+    "vue-router",
+    "prefetch router"
+  ],
+  "homepage": "https://github.com/Scanood/vue-prefetch-router-link",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Scanood/vue-prefetch-router-link"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,10 +22,22 @@
   },
   "dependencies": {
     "vue": "^3.5.10",
+    "vue-prefetch-router-link": "^0.0.1",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
     "vite": "^5.4.8"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/prefetch-router-link.umd.cjs",
+  "module": "./dist/prefetch-router-link.js",
+  "exports": {
+    ".": {
+      "import": "./dist/prefetch-router-link.js",
+      "require": "./dist/prefetch-router-link.umd.cjs"
+    }
   }
 }

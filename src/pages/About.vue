@@ -1,5 +1,7 @@
 <script setup>
-import { useTele } from '../components/useTele'
+// import { useTele } from '../components/useTele'
+// import { useTele } from '../../dist/prefetch-router-link.js'
+import {useTele} from 'vue-prefetch-router-link'
 const tele = useTele()
 function mockEvent() {
     console.log('hover');

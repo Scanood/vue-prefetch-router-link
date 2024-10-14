@@ -1,2 +1,3 @@
-export { PrefetchRouterLink } from './components/PrefetchRouterLink.vue'
-export { useTele } from './components/useTele'
+import PrefetchRouterLink from './components/PrefetchRouterLink.vue'
+import { useTele } from './components/useTele'
+export { PrefetchRouterLink, useTele }

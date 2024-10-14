@@ -1,13 +1,23 @@
 # vue-prefetch-router-link
 
 
+## install
+
+```bash
+npm i vue-prefetch-router-link
+```
+
 ## Usage
 
 ### 1. 进入某页面后自动加载
 ```html
+<script setup>
+  import { PrefetchRouterLink } from 'vue-prefetch-router-link'
+</script>
+
 <template>
   <nav class="nav">
-    // 接收RouterLink相同的参数，to为一个对象
+    <!-- 接收RouterLink相同的参数，to为一个对象 -->
     <PrefetchRouterLink 
     :to="{ name: 'about' }" 
     prefetchName="dashboard"
@@ -15,7 +25,7 @@
     About[dashboard]
     </PrefetchRouterLink>
 
-    // 接收RouterLink相同的参数，to为一个字符串
+    <!-- 接收RouterLink相同的参数，to为一个字符串 -->
     <PrefetchRouterLink 
     to="/admin" 
     prefetchName="panel"
@@ -23,7 +33,7 @@
     Admin[panel]
     </PrefetchRouterLink>
 
-    // prefetchName可接收一个字符串数组
+    <!-- prefetchName可接收一个字符串数组 -->
     <PrefetchRouterLink 
     to="/father" 
     :prefetchName="['son1','son2']"
@@ -46,23 +56,28 @@ prefetchName="panel"
 Admin[panel]
 </PrefetchRouterLink>
 ```
-表示为：导航到`/admin`页面后，预加载`name:panel`的路由。
+表示为：导航到`/admin`页面后，自动加载`name`为`panel`的路由。
 
 ### 2. 手动启动预加载
 ```html
-<PrefetchRouterLink 
-:to="{ name: 'about' }" 
-prefetchName="dashboard" 
-:teleEnabled="true"
->
-About[dashboard]
-</PrefetchRouterLink>
+<template>
+
+  <PrefetchRouterLink 
+  :to="{ name: 'about' }" 
+  prefetchName="dashboard" 
+  :teleEnabled="true"
+  >
+  About[dashboard]
+  </PrefetchRouterLink>
+
+</template>
 ```
 设置`:teleEnabled="true"`。
 
 在`About.vue`中，通过某些事件手动启动预加载。
 ```vue
 <script setup>
+import { useTele } from 'vue-prefetch-router-link'
 const tele = useTele()
 function mockEvent() {
      tele.open(); // 触发预加载

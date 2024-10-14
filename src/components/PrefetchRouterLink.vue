@@ -8,8 +8,9 @@
 
 <script setup>
 import { useAttrs, watch, ref } from 'vue';
-import { RouterLink, useRoute, useRouter, createRouterMatcher } from 'vue-router';
+import { RouterLink, useRoute, useRouter, } from 'vue-router';
 import { useTele } from './useTele'
+import { useMatcher } from './useMatcher'
 const attrs = useAttrs()
 const props = defineProps({
     prefetchName: String | Array,
@@ -28,31 +29,25 @@ function FomatPrefetchPath() {
     return prefetchName
 }
 
-
-const router = useRouter()
-const matcher = createRouterMatcher(router.options.routes, router.options)
-function getRoute(name) {
-    return matcher.getRecordMatcher(name).record
-}
-
 const prefetchName = FomatPrefetchPath()
 const route = useRoute()
+const router = useRouter()
 const to = router.resolve(attrs.to)
-console.log("to.fullPath",to.fullPath);
-
 const tele = useTele(to.fullPath)
 
+const getRecord = useMatcher()
 watch([() => route.fullPath, () => tele.getTele()], (newpath) => {
     if (newpath[0] === to.fullPath && clicked.value) {
         if (props.teleEnabled && tele.getTele() || !props.teleEnabled) {
             prefetchName.forEach((name) => {
-                const Components = getRoute(name).components
-                Object.values(Components).forEach((Component) => {
-                    if (typeof Component === 'function') {
-                        setTimeout(() => { Component() }, 0)
-                    }
-                })
-
+                const Components = getRecord(name)?.components
+                if (Components) {
+                    Object.values(Components).forEach((Component) => {
+                        if (typeof Component === 'function') {
+                            setTimeout(() => { Component() }, 0)
+                        }
+                    })
+                }
             })
         }
     } else {
