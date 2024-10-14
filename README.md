@@ -93,3 +93,8 @@ function mockEvent() {
     </div>
 </template>
 ```
+
+## live demo
+可以通过浏览器devtools查看效果。
+
+[Live Demo](https://vue-prefetch-router-link.netlify.app)
