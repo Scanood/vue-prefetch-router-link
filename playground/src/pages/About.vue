@@ -1,10 +1,7 @@
 <script setup>
-// import { useTele } from '../components/useTele'
-// import { useTele } from '../../dist/prefetch-router-link.js'
-import {useTele} from 'vue-prefetch-router-link'
+import { useTele } from '../../../src/components/useTele'
 const tele = useTele()
 function mockEvent() {
-    console.log('hover');
     tele.open();
 }
 
@@ -25,12 +22,16 @@ function mockEvent() {
     margin: auto;
     text-align: center;
     align-content: center;
-    background-color: aquamarine;
 }
 
 .hover {
     width: 100px;
     height: 100px;
     background-color: pink;
+    border-radius: 10px;
+    line-height: 100px;
+    margin: auto;
+    margin-top: 20px;
+    cursor: pointer;
 }
 </style>
