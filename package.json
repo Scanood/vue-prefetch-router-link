@@ -1,7 +1,7 @@
 {
   "name": "vue-prefetch-router-link",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "scanood",
   "description": "Automatically or manually prefetch specified routes in vue app.",
   "keywords": [
