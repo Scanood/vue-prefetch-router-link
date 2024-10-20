@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 const TeleMap = new Map()
 // name:router fullpath
-function useTele(name) {
+function useTele(name: string) {
     if (!name) {
         const route = useRoute()
         name = route.fullPath

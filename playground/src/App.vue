@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView, RouterLink } from 'vue-router';
-import PrefetchRouterLink from '../../src/components/PrefetchRouterLink.vue'
+import { PrefetchRouterLink } from '../../src/index'
 const name = 'dashboard'
 const panel = 'panel'
 </script>

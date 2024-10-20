@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "types": ["vite/client"],
+        "outDir": "dist",
+        "lib": [
+            "esnext",
+            "DOM",
+            "ES2023"
+        ],
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true,
+        "jsx": "preserve",
+        "allowJs": true,
+        "strictNullChecks": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true
+    },
+    "exclude": [
+        "dist",
+        "playground",
+    ]
+}

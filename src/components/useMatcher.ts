@@ -1,10 +1,11 @@
 import { useRouter, createRouterMatcher } from 'vue-router'
-let matcher = undefined
+import type { RouterMatcher } from 'vue-router'
+let matcher:RouterMatcher | undefined = undefined
 function useMatcher() {
 
-    function getRecord(name) {
+    function getRecord(name: string) {
         // todo addroutes
-        return matcher.getRecordMatcher(name)?.record
+        return matcher?.getRecordMatcher(name)?.record
     }
     if (matcher) return getRecord
 

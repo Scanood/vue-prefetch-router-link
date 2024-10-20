@@ -1,5 +1,5 @@
 <script setup>
-import { useTele } from '../../../src/components/useTele'
+import { useTele } from '../../../src/index'
 const tele = useTele()
 function mockEvent() {
     tele.open();
